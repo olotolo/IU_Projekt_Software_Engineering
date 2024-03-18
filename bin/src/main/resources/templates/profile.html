@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    p{
+      font-size: larger;
+      font-weight: bold;
+    }
+    .back {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    .back:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <title>Profile</title>
+</head>
+<body>
+<h1>Ihr Profil</h1>
+
+<p class="role">
+  Ihr Benutzername: <span sec:authentication="principal.username"></span>
+  <br><br>
+  <span th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Ihre Rolle: Projektleiter</span>
+  <span th:if="!${#authorization.expression('hasRole(''ADMIN'')')}">Ihre Rolle: Mitarbeiter</span>
+</p>
+
+<hr><br>
+<script>
+  function goBack() {
+    window.location.href = "http://localhost:8081";
+  }
+</script>
+
+<button class="back" onclick="goBack()">Back to Home</button>
+
+</body>
+</html>

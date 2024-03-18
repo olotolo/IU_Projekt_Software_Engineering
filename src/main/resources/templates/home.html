@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Welcome Page</title>
+	    <style>
+	        .profile {
+	            right: 240px;
+	            border-radius: 4px;
+	            padding: 10px 10px;
+	            background-color: #3498db;
+	            font-weight: bold;
+	            text-decoration: none;
+	            color: white;
+	            cursor: pointer;
+	            transition: background-color 0.3s ease;
+	        }
+	
+	        .logout {
+	            background-color: #FFA500;
+	            border: none;
+	            color: white;
+	            padding: 10px 10px;
+	            text-align: center;
+	            text-decoration: none;
+	            display: inline-block;
+	            font-size: 16px;
+	            border-radius: 4px;
+	            cursor: pointer;
+	            position: absolute;
+	            right: 160px;
+	        }
+	
+	        body {
+	            font-family: Arial, sans-serif;
+	            margin: 0;
+	            padding: 0;
+	        }
+	
+	        .top-bar {
+	            background-color: #0dcaf0 !important;
+	            color: #fff;
+	            padding: 10px;
+	            /* text-align: center; */
+	            display: flex;
+	            justify-content: space-between;
+	            align-items: center;
+	        }
+	
+	        .top-sidebar{
+	            height: 100%;
+	            width: 20%;
+	        }
+	
+	        .top-bar a {
+	            color: #fff;
+	            text-decoration: none;
+	            margin: 0 10px;
+	        }
+	
+	        .welcome-message {
+	            text-align: center;
+	            padding: 50px 0;
+	        }
+	
+	        .logout{
+	            background-color: transparent !important;
+	        }
+	
+	        .logoutContainer {
+	            display: flex !important;
+	            /* justify-content: space-between !important; */
+	            align-items: center!important;
+	            width: 50%;
+	            margin-left: auto;
+	            margin-right: auto;
+	        }
+	 
+	        .logout{
+	            background-color: red;
+	            position:relative !important;
+	            right: 0px !important;
+	        }
+	    </style>
+	</head>	
+	<body>
+	    <div class="top-bar">
+	        <div class="top-sidebar"></div>
+	        <div>
+	            <a href="/mitarbeiter">Mitarbeiter</a>
+	            <a href="/projekte">Projekte</a>
+	            <a href="/aufgaben">Aufgaben</a>
+	        </div>
+	        <div class="top-sidebar">
+	            <div class="logoutContainer">	                
+	                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+	                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+	                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+	                </svg>
+	                <form action="" th:action="@{/logout}" method="post" class="form">
+	                    <input class="logout" type="submit" value="Abmelden"/>
+	                </form>
+	            </div>	          
+	        </div>	       
+	    </div>
+	    <div class="welcome-message">
+	        <h1>Willkommen im Projektplanungstool!</h1>
+	        <p>Schön das Sie hier sind.</p>
+	    </div>
+	</body>
+</html>

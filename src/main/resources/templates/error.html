@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Redirect Page</title>
+		<style>
+			body {
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  height: 100vh;
+			  margin: 0;
+			  background-color: #f0f0f0;
+			}
+			
+			h2 {
+			  color: black;
+			  text-align: center;
+			   font-family: "Inter", sans-serif !important;
+			}
+			
+			.container {
+			  text-align: center;
+			}
+			
+			h1 {
+			  color: red;		  
+			  text-align: center;			  
+			  height: auto;
+			  animation: dance 2s infinite ease-in-out;
+			  font-family: "Inter", sans-serif !important;
+			}
+			
+			@keyframes dance {
+			  0%, 100% {
+			    transform: translateY(0);
+			  }
+			  50% {
+			    transform: translateY(-20px);
+			  }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Bereich gesperrt</h1>
+			<h2>Fehlende Berechtigungen</h2>
+			<h2>Sie sind nicht berechtigt um das zu tun!</h2>	  
+		</div>
+		<script>
+			setTimeout(function () {
+				window.location.href = "http://localhost:8081";
+			}, 5000);
+		</script>	
+	</body>
+</html>

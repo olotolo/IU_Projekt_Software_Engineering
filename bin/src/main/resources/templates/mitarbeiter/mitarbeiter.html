@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .logout {
+            background-color: #FFA500;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            right: 160px; /* Adjust this value to set the horizontal position */
+        }
+        h3 {
+            text-align: center;
+        }
+        input[type="submit"]:hover {
+            background-color: #cc790c;
+        }
+
+        .back-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function displayText() {
+            var text = document.getElementById("textField");
+            text.style.display = "block";
+        }
+    </script>
+    <title>Mitarbeiter</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Mitarbeiter</h3>
+
+    <hr>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Geburtstag</th>
+            <th>Rolle</th>
+            <th>Faehigkeiten</th>
+            <th>User</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempMitarbeiter : ${Mitarbeiter}">
+            <td th:text="${tempMitarbeiter.id}"/>
+            <td th:text="${tempMitarbeiter.firstName}"/>
+            <td th:text="${tempMitarbeiter.lastName}"/>
+            <td th:text="${tempMitarbeiter.geburtstag}"/>
+            <td th:text="${tempMitarbeiter.rolle}"/>
+            <td th:text="${tempMitarbeiter.faehigkeiten}"/>
+            <td th:text="${tempMitarbeiter.user}"/>
+        </tr>
+        </tbody>
+    </table>
+
+    <form action="" th:action="@{/logout}" method="post">
+        <input class="logout" type="submit" value="logout"/>
+    </form>
+
+    <script>
+        function goBack() {
+            window.location.href = "http://localhost:8081";
+        }
+    </script>
+
+    <button class="back-button" onclick="goBack()">Go Back</button>
+
+
+</div>
+
+
+
+</body>
+</html>

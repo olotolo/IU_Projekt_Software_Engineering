@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8">
+	    <style>
+	        body {
+	            font-family: Arial, sans-serif;
+	            margin: 0;
+	            padding: 0;
+	            min-height: 100vh;
+	            background-color: lightblue;
+	        }
+	 
+	        .container {
+	            width: 450px;
+	            background-color: white;
+	            color: #fff;
+	            box-shadow: 0px 0px 5px grey;
+	            padding: 20px;
+	            margin-left: auto;
+	            margin-right: auto;
+	            margin-top: 200px;
+	        }
+	 
+	        .back {
+	            background-color: firebrick;
+	            color: #222;
+	            font-weight: bold;
+	            padding: 9px 5px;
+	            margin: 5px;
+	            border: none;
+	            border-radius: 5px;
+	            cursor: pointer;
+	            text-decoration: none;
+	            transition: background-color 0.3s ease;
+	        }
+	 
+	        h2 {
+	            color: #0dcaf0;
+	            margin-top: 0;
+	            padding-bottom: 15px;
+	            border-bottom: 1px solid #444;
+	        }
+	 
+	        label {
+	            display: block;
+	            margin-bottom: 5px;
+	            font-weight: bold;
+	            color: grey;
+	        }
+	 
+	        input[type="text"],
+	        input[type="number"],
+	        input[type="email"] {
+	            width: 90%;
+	            padding: 10px;
+	            margin-bottom: 15px;
+	            border: 1px solid #444;
+	            border-radius: 5px;
+	            background-color: white;
+	            color: black;
+	        }
+	 
+	        input[type="checkbox"] {
+	            margin-top: 10px;
+	        }
+	 
+	        input[type="submit"] {
+	            font-weight: bold;
+	            background-color: greenyellow;
+	            color: #222;
+	            padding: 10px 15px;
+	            border: none;
+	            border-radius: 5px;
+	            cursor: pointer;
+	            transition: background-color 0.3s ease;
+	        }
+	 
+	        input[type="submit"]:hover {
+	            background-color: green;
+	            color: white !important;
+	        }
+	 
+	        input[type="submit"] {
+	            background-color: green;
+	            color: white !important;
+	        }
+	 
+	        .back:hover {
+	            background-color: red;
+	        }
+	        .back{
+	            color: white !important;
+	            background-color: red !important ;
+	        }
+	 
+	        select {
+	            padding: 10px;
+	            font-size: 16px;
+	            border: 1px solid #ccc;
+	            border-radius: 5px;
+	            background-color: #fff;
+	            color: #333;
+	        }	        
+	        select:focus {
+	            outline: none;
+	            border-color: #007bff;
+	            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+	        }
+	        	        
+	        option {
+	            padding: 5px;
+	        }
+	        #deadline{
+	            margin-bottom: 15px;
+	        }
+	        .top-bar {
+	            background-color: #0dcaf0 !important;
+	            color: #fff;
+	            padding: 10px;
+	            display: flex;
+	            justify-content: space-between;
+	            align-items: center;
+	        }
+	
+	        .top-sidebar {
+	            height: 100%;
+	            width: 20%;
+	        }
+	
+	        .top-bar a {
+	            color: #fff;
+	            text-decoration: none;
+	            margin: 0 10px;
+	        }
+	
+	        .logoutContainer {
+	            display: flex !important;
+	            align-items: center !important;
+	            width: 50%;
+	            margin-left: auto;
+	            margin-right: auto;
+	        }
+	
+	        .logout {
+	            background-color: red;
+	            position: relative !important;
+	            right: 0px !important;
+	        }
+	
+	        #Abmelden{
+	            background-color: transparent !important;
+	        }	 
+	    </style>
+	    <title>Projekt anlegen</title>
+	</head>
+	<body>	 
+	    <div class="top-bar">
+	        <div class="top-sidebar"></div>
+	        <div>
+	            <a href="/mitarbeiter">Mitarbeiter</a>
+	            <a href="/projekte">Projekte</a>
+	            <a href="/aufgaben">Aufgaben</a>
+	        </div>
+	        <div class="top-sidebar">
+	            <div class="logoutContainer">	                
+	                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+	                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+	                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+	                </svg>
+	                <form action="" th:action="@{/logout}" method="post" class="form">
+	                    <input class="logout" type="submit" value="Abmelden" id="Abmelden"/>
+	                </form>
+	            </div>	
+	        </div>
+	    </div>
+	    <div class="container">
+	        <form action="#" th:action="@{/projekte/save}" th:object="${projekt}" method="post">
+	            <h2>Neues Projekt erstellen</h2>                
+	            <input type="hidden" th:field="*{projektid}">
+	            <input type="hidden" th:field="*{ersteller}">
+	            <input type="hidden" th:field="*{erstellDatum}">
+	            <input type="hidden" th:field="*{status}">			                
+	            <div>
+	                <label  for="projektname">Projektname:</label>
+	                <input type="text" th:field="*{projektname}" id="projektname" required>
+	            </div>	            
+	            <div style="margin-top: 5px;">
+	                <label for="beschreibung">Beschreibung:</label>
+	                <input type="text" th:field="*{beschreibung}" id="beschreibung" name="beschreibung" required>
+	            </div>           	                              	     	 
+	            <div style="margin-top: 5px;">
+	                <label for="deadline">Deadline:</label>
+	                <input type="date"  th:field="*{deadline}" id="deadline" required>
+	            </div>            	 
+	            <div style="margin-top: 5px;">
+	                <label for="projektleiter">Projektleiter auswählen:</label>
+	                <select th:field="*{projektleiter}" id="projektleiter" name="projektleiter" required>
+	                	<option value=""></option>
+	                    <option th:each="tempProjektleiter : ${projektleiter}" th:value="${tempProjektleiter.user}" th:text="${tempProjektleiter.user}"></option>
+	                </select>
+	            </div>         					
+	            <div style="margin-top: 20px;">
+	            	<a th:href="@{/projekte}" class="back"> Zurück</a>
+		         	<input type="submit" value="Erstellen">
+		        </div>     			   
+	        </form>	        
+	    </div>	 
+	</body>
+</html>

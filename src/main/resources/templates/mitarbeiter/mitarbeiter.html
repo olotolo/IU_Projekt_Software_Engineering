@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          	  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        
+	    <style>
+	        h3 {
+	            text-align: center;
+	        }	
+	        
+	        input[type="submit"]:hover {
+	            background-color: coral;
+	        }	
+	        .back-button {
+	            background-color: transparent;
+	            border: none;
+	            color: black;
+	            padding: 10px 20px;
+	            text-align: center;
+	            text-decoration: none;
+	            display: inline-block;
+	            font-size: 16px;
+	            border-radius: 4px;
+	            cursor: pointer;
+	
+	        }
+	
+	        #anlegen-button {
+	            padding: 10px 20px;
+	            font-family: "Inter", sans-serif !important;
+	            color: white;
+	            background-color: #0dcaf0;
+	        }
+	
+	        .headerWrapper {
+	            display: flex;
+	            justify-content: space-between;
+	            align-items: center;
+	            margin-top: 10px;
+	        }
+
+	        .light {
+	            background-color: #0dcaf0;
+	            color: white !important;
+	        }
+	
+	        .form {
+	            display: flex !important;
+	        }
+	
+	        .white {
+	            color: white;
+	        }
+	
+	        .top-bar {
+	            background-color: #0dcaf0 !important;
+	            color: #fff;
+	            padding: 10px;
+	            /* text-align: center; */
+	            display: flex;
+	            justify-content: space-between;
+	            align-items: center;
+	        }
+	
+	        .top-sidebar {
+	            height: 100%;
+	            width: 20%;
+	        }
+	
+	        .top-bar a {
+	            color: #fff;
+	            text-decoration: none;
+	            margin: 0 10px;
+	        }
+	
+	        .logout {
+	            background-color: #FFA500;
+	            border: none;
+	            color: white;
+	            padding: 10px 10px;
+	            text-align: center;
+	            text-decoration: none;
+	            display: inline-block;
+	            font-size: 16px;
+	            border-radius: 4px;
+	            cursor: pointer;
+	            position: absolute;
+	            right: 160px;	           
+	        }
+	
+	        .logout {
+	            background-color: transparent !important;
+	        }
+	
+	        .logoutContainer {
+	            display: flex !important;
+	            /* justify-content: space-between !important; */
+	            align-items: center !important;
+	            width: 50%;
+	            margin-left: auto;
+	            margin-right: auto;
+	        }
+	
+	        .logout {
+	            background-color: red;
+	            position: relative !important;
+	            right: 0px !important;
+	        }
+	
+	        #Abmelden {
+	            background-color: transparent !important;
+	        }
+	
+	        .backdiv {
+	            display: flex;
+	            justify-content: space-between;
+	            align-items: center;
+	        }
+	    </style>
+	    <script>
+	        function displayText() {
+	            var text = document.getElementById("textField");
+	            text.style.display = "block";
+	        }
+	    </script>
+    	<title>Mitarbeiter</title>
+	</head>
+
+	<body>
+		<div class="top-bar">
+	        <div class="top-sidebar"></div>
+	        <div>
+	            <a href="/mitarbeiter">Mitarbeiter</a>
+	            <a href="/projekte">Projekte</a>
+	            <a href="/aufgaben">Aufgaben</a>
+	        </div>
+	        <div class="top-sidebar">
+	            <div class="logoutContainer">	                
+	                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+	                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+	                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+	                </svg>
+	                <form action="" th:action="@{/logout}" method="post" class="form">
+	                    <input class="logout" type="submit" value="Abmelden" id="Abmelden" />
+	                </form>
+	            </div>	
+	        </div>
+	    </div>
+	    <div class="container">
+	        <div class="headerWrapper">
+	            <div class="backdiv">
+	                <button class="back-button" onclick="goBack()">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+	                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+	                    </svg></button>
+	                <h3>Mitarbeiter</h3>
+	            </div>
+	        </div>
+	        <hr>	
+	        <table class="table table-bordered table-striped">
+	            <thead class="light">
+	                <tr>
+			            <th>ID</th>
+			            <th>First Name</th>
+			            <th>Last Name</th>
+			            <th>Geburtstag</th>
+			            <th>Rolle</th>
+			            <th>Faehigkeiten</th>
+			            <th>User</th>
+			        </tr>
+	            </thead>	
+	            <tbody>
+	            	<tr th:each="tempMitarbeiter : ${Mitarbeiter}">
+			            <td th:text="${tempMitarbeiter.id}"/>
+			            <td th:text="${tempMitarbeiter.firstName}"/>
+			            <td th:text="${tempMitarbeiter.lastName}"/>
+			            <td th:text="${tempMitarbeiter.geburtstag}"/>
+			            <td th:text="${tempMitarbeiter.rolle}"/>
+			            <td th:text="${tempMitarbeiter.faehigkeiten}"/>
+			            <td th:text="${tempMitarbeiter.user}"/>      
+			        </tr>
+	            </tbody>
+	        </table>
+	        <script>
+	            function goBack() {
+	                window.location.href = "http://localhost:8081";
+	            }
+	        </script>	       
+	    </div>
+	</body>
+</html>

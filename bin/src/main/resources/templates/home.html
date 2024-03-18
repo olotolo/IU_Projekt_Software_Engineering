@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Page</title>
+  <style>
+    .profile {
+      right:240px;
+      border-radius: 4px;
+      position: absolute;
+      padding: 10px 10px;
+      background-color: #3498db;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .logout {
+      background-color: #FFA500;
+      border: none;
+      color: white;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      position: absolute;
+      right: 160px; /* Adjust this value to set the horizontal position */
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .top-bar {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    .top-bar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .welcome-message {
+      text-align: center;
+      padding: 50px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="top-bar">
+  <a href="/mitarbeiter">Mitarbeiter</a>
+  <a href="/projekte">Projekte</a>
+  <a href="/aufgaben">Aufgaben</a>
+</div>
+<div class="welcome-message">
+  <h1>Welcome to Our Website!</h1>
+  <p>We're glad you're here.</p>
+</div>
+
+<a class="profile" th:href="@{/profile}">Profile</a>
+
+<form action="" th:action="@{/logout}" method="post">
+  <input class="logout" type="submit" value="Logout"/>
+</form>
+</body>
+</html>

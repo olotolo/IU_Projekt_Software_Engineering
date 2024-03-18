@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .logout {
+            background-color: #FFA500;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            right: 160px; /* Adjust this value to set the horizontal position */
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        input[type="submit"]:hover {
+            background-color: coral;
+        }
+
+        .back-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+        #anlegen-button{
+            padding: 10px 20px;
+        }
+
+
+    </style>
+
+    <title>Projekte</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Projekte</h3>
+
+    <hr>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Projektname</th>
+            <th>Erstelldatum</th>
+            <th>Status</th>
+            <th>Beschreibung</th>
+            <th>Deadline</th>
+            <th>Ersteller</th>
+            <th>Projektleiter</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempProjkt : ${projekt}">
+            <td th:text="${tempProjkt.id}"/>
+            <td th:text="${tempProjkt.projektName}"/>
+            <td th:text="${tempProjkt.erstellDatum}"/>
+            <td th:text="${tempProjkt.status}"/>
+            <td th:text="${tempProjkt.beschreibung}"/>
+            <td th:text="${tempProjkt.deadline}"/>
+            <td th:text="${tempProjkt.ersteller}"/>
+            <td th:text="${tempProjkt.projektleiter}"/>
+            <td>
+                <a th:href="@{/projekte/update(projektId=${tempProjkt.id})}" class="btn btn-info btn-sm">
+                    Update</a>
+
+                <a th:href="@{/projekte/delete(projektid=${tempProjkt.id})}" class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('are you sure want to delete this projekt?'))) return false">
+                    Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form action="" th:action="@{/logout}" method="post">
+        <input class="logout" type="submit" value="logout"/>
+    </form>
+
+    <a th:href="@{/projekte/anlegen}" class="btn btn-info btn-sm" id="anlegen-button">Projekt anlegen</a>
+
+    <script>
+        function goBack() {
+                window.location.href = "http://localhost:8081";
+        }
+    </script>
+
+    <button class="back-button" onclick=goBack()>Go Back</button>
+
+
+</div>
+
+</body>
+</html>

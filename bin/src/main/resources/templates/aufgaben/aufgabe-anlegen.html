@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+        }
+
+        .container {
+            width: 450px;
+            background-color: #1b4160;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px white;
+            padding: 20px;
+        }
+
+        .back {
+            background-color: firebrick;
+            color: #222;
+            font-weight: bold;
+            padding: 9px 5px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        h2 {
+            color: white;
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: white;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            font-weight: bold;
+            background-color: greenyellow;
+            color: #222;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #10bd01;
+        }
+
+        .back:hover {
+            background-color: red;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+        }
+        /* Style for select element when focused */
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        /* Style for option elements */
+        option {
+            padding: 5px;
+        }
+    </style>
+    <title>Aufgabe anlegen</title>
+</head>
+<body>
+
+
+<div class="container">
+
+    <form action="#" th:action="@{/aufgaben/save}" th:object="${aufgabe}" method="post">
+        <h2>Projekt anlegen</h2>
+        <form>
+
+            <input type="hidden" th:field="*{id}">
+
+            <label for="titel">Titel:</label>
+            <input type="text" th:field="*{titel}" id="titel">
+
+            <label for="beschreibung">Beschreibung:</label>
+            <input type="text" th:field="*{beschreibung}" id="beschreibung" name="beschreibung">
+
+            <label for="status">Status:</label>
+            <input type="text" th:field="*{status}" id="status" name="status">
+
+            <label for="deadline">Deadline:</label>
+            <input type="date"  th:field="*{deadline}" id="deadline" required>
+
+            <label for="mitarbeiter">Mitarbeiter auswählen:</label>
+            <select th:field="*{mitarbeiter}" id="mitarbeiter" name="mitarbeiter">
+                <option value="messi">messi</option>
+                <option value="cristiano">ronaldo</option>
+                <option value="neymar">neymar</option>
+                <option value="ricardo">ricardo</option>
+                <option value="kylian">kylian</option>
+                <option value="iker">iker</option>
+                <option value="gianluigi">gianluigi</option>
+                <option value="erling">erling</option>
+                <option value="kevin">kevin</option>
+                <option value="karim">karim</option>
+                <option value="robert">robert</option>
+                <option value="vinicius">vinicius</option>
+                <option value="harry">harry</option>
+            </select>
+            <br><br>
+            <label for="projektleiter">Projektleiter auswählen:</label>
+            <select th:field="*{projektleiter}" id="projektleiter" name="projektleiter">
+                <option value="pep">pep</option>
+                <option value="jose">jose</option>
+                <option value="carlo">carlo</option>
+                <option value="zinedine">zinedine</option>
+            </select>
+            <br><br>
+            <a th:href="@{/aufgaben}" class="back"> Back to Aufgaben</a>
+
+            <input type="submit" value="Save">
+
+        </form>
+
+    </form>
+</div>
+
+</body>
+</html>
